@@ -16,19 +16,23 @@ platforms:
     driver:
       image: netmanagers/salt-2019.2-py3:debian-9
       provision_command:
-        - echo "en_GB.UTF-8 UTF-8" >> /etc/locale.gen
-        - locale-gen en_GB.UTF-8
+        - rm -f /etc/default/locale /etc/locale.gen
+        - echo 'locales locales/locales_to_be_generated multiselect en_US.UTF-8 UTF-8, en_GB.UTF-8 UTF-8' | debconf-set-selections -
+        - echo 'locales locales/default_environment_locale select en_US.UTF-8' | debconf-set-selections -
+        - dpkg-reconfigure -f noninteractive locales
   - name: ubuntu-1804-2019-2-py3
     driver:
       image: netmanagers/salt-2019.2-py3:ubuntu-18.04
       provision_command:
-        - localedef -i en_GB -c -f UTF-8 -A /usr/share/locale/locale.alias en_GB.UTF-8
-        - echo "en_GB.UTF-8 UTF-8" >> /etc/locale.gen
-        - locale-gen en_GB.UTF-8
+        - rm -f /etc/default/locale /etc/locale.gen
+        - echo 'locales locales/locales_to_be_generated multiselect en_US.UTF-8 UTF-8, en_GB.UTF-8 UTF-8' | debconf-set-selections -
+        - echo 'locales locales/default_environment_locale select en_US.UTF-8' | debconf-set-selections -
+        - dpkg-reconfigure -f noninteractive locales
   - name: centos-7-2019-2-py3
     driver:
       image: netmanagers/salt-2019.2-py3:centos-7
       provision_command:
+        - rm -f /etc/default/locale /etc/locale.gen
         - echo "LANG=en_GB.UTF-8" >> /etc/locale.conf
         - localedef -i en_GB -c -f UTF-8 -A /usr/share/locale/locale.alias en_GB.UTF-8
   - name: fedora-29-2019-2-py3
@@ -44,19 +48,23 @@ platforms:
     driver:
       image: netmanagers/salt-2018.3-py2:debian-9
       provision_command:
-        - echo "en_GB.UTF-8 UTF-8" >> /etc/locale.gen
-        - locale-gen en_GB.UTF-8
+        - rm -f /etc/default/locale /etc/locale.gen
+        - echo 'locales locales/locales_to_be_generated multiselect en_US.UTF-8 UTF-8, en_GB.UTF-8 UTF-8' | debconf-set-selections -
+        - echo 'locales locales/default_environment_locale select en_US.UTF-8' | debconf-set-selections -
+        - dpkg-reconfigure -f noninteractive locales
   - name: ubuntu-1604-2018-3-py2
     driver:
       image: netmanagers/salt-2018.3-py2:ubuntu-16.04
       provision_command:
-        - localedef -i en_GB -c -f UTF-8 -A /usr/share/locale/locale.alias en_GB.UTF-8
-        - echo "en_GB.UTF-8 UTF-8" >> /etc/locale.gen
-        - locale-gen en_GB.UTF-8
+        - rm -f /etc/default/locale /etc/locale.gen
+        - echo 'locales locales/locales_to_be_generated multiselect en_US.UTF-8 UTF-8, en_GB.UTF-8 UTF-8' | debconf-set-selections -
+        - echo 'locales locales/default_environment_locale select en_US.UTF-8' | debconf-set-selections -
+        - dpkg-reconfigure -f noninteractive locales
   - name: centos-7-2018-3-py2
     driver:
       image: netmanagers/salt-2018.3-py2:centos-7
       provision_command:
+        - rm -f /etc/default/locale /etc/locale.gen
         - echo "LANG=en_GB.UTF-8" >> /etc/locale.conf
         - localedef -i en_GB -c -f UTF-8 -A /usr/share/locale/locale.alias en_GB.UTF-8
   - name: fedora-29-2018-3-py2
@@ -79,15 +87,18 @@ platforms:
     driver:
       image: netmanagers/salt-2017.7-py2:debian-8
       provision_command:
-        - echo "en_GB.UTF-8 UTF-8" >> /etc/locale.gen
-        - locale-gen en_GB.UTF-8
+        - rm -f /etc/default/locale /etc/locale.gen
+        - echo 'locales locales/locales_to_be_generated multiselect en_US.UTF-8 UTF-8, en_GB.UTF-8 UTF-8' | debconf-set-selections -
+        - echo 'locales locales/default_environment_locale select en_US.UTF-8' | debconf-set-selections -
+        - dpkg-reconfigure -f noninteractive locales
   - name: ubuntu-1604-2017-7-py2
     driver:
       image: netmanagers/salt-2017.7-py2:ubuntu-16.04
       provision_command:
-        - localedef -i en_GB -c -f UTF-8 -A /usr/share/locale/locale.alias en_GB.UTF-8
-        - echo "en_GB.UTF-8 UTF-8" >> /etc/locale.gen
-        - locale-gen en_GB.UTF-8
+        - rm -f /etc/default/locale /etc/locale.gen
+        - echo 'locales locales/locales_to_be_generated multiselect en_US.UTF-8 UTF-8, en_GB.UTF-8 UTF-8' | debconf-set-selections -
+        - echo 'locales locales/default_environment_locale select en_US.UTF-8' | debconf-set-selections -
+        - dpkg-reconfigure -f noninteractive locales
   - name: centos-6-2017-7-py2
     driver:
       image: netmanagers/salt-2017.7-py2:centos-6
