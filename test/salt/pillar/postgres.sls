@@ -18,7 +18,7 @@ postgres:
   {%- if not (grains.os_family == 'Debian') %}
   version: '9.6'
   {%- else %}
-  version: '10'
+  version: '13'
   {%- endif %}
   # # Set True to add a file in /etc/profile.d adding the bin dir in $PATH
   # # as packages from upstream put them somewhere like /usr/pgsql-10/bin
