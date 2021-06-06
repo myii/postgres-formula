@@ -16,7 +16,7 @@ postgres:
   use_upstream_repo: True
   # Version to install from upstream repository (if upstream_repo: True)
   {%- if not (grains.os_family == 'Debian') %}
-  version: '9.6'
+  version: '13'
   {%- else %}
   version: '13'
   {%- endif %}
