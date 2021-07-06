@@ -10,7 +10,8 @@ postgres.port: '5433'
 postgres:
   # UPSTREAM REPO
   # Set True to configure upstream postgresql.org repository for YUM/APT/ZYPP
-  {%- if grains.os_family != 'Debian' and salt['grains.get']('osfinger') != 'CentOS-6' %}
+  # Use the upstream repo for all Debian, RedHat and Suse platforms except openSUSE Tumbleweed
+  {%- if not (grains.os_family in ['Debian', 'RedHat', 'Suse'] and grains.get('oscodename', '') != 'openSUSE Tumbleweed') %}
   use_upstream_repo: False
   {%- else %}
   use_upstream_repo: True
